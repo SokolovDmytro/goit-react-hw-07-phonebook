@@ -8,12 +8,12 @@ import contactsConstans from './contactsConstans';
 //   },
 // });
 
-// const deleteContact = (id) => ({
-//   type: contactsConstans.DEL,
-//   payload: {
-//     id,
-//   },
-// });
+const deleteContact = (id) => ({
+  type: contactsConstans.DEL,
+  payload: {
+    id,
+  },
+});
 
 const filter = filter => {
   return {
@@ -92,7 +92,7 @@ const removeContactError = error => {
 
 export default {
   // addContact,
-  // deleteContact,
+  deleteContact,
   filter,
   duplicate,
 
