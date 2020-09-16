@@ -27,7 +27,7 @@ const filter = (state = '', { type, payload }) => {
   }
 };
 
-const alertSwitch = (state = false, { type }) => {
+const alertStatus = (state = false, { type }) => {
   switch (type) {
     case contactsConstans.DUPLICATE:
       return !state;
@@ -74,4 +74,4 @@ const error = (state = null, { type, payload }) => {
   }
 };
 
-export default combineReducers({ items, filter, alertSwitch, loading, error });
+export default combineReducers({ items, filter, alertStatus, loading, error });

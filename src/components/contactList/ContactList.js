@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ContactListItem from '../contactForm/contactListItem/ContactListItem';
-// import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import slideTransition from '../../transitions/slide.module.css';
 import constansSelector from '../../../src/redux/contacts/constansSelector';
@@ -41,35 +40,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
-
-// const ContactList = ({ contacts, removeContact }) => (
-//   <TransitionGroup component="ul">
-//     {contacts.map(contact => (
-//       <CSSTransition
-//         key={contact.id}
-//         timeout={250}
-//         classNames={slideTransition}
-//         unmountOnExit
-//       >
-//         <ContactListItem
-//           contact={contact}
-//           id={contact.id}
-//           removeContact={removeContact}
-//         />
-//       </CSSTransition>
-//     ))}
-//   </TransitionGroup>
-// );
-
-// ContactList.propTypes = {
-//   removeContact: PropTypes.func.isRequired,
-//   contact: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     }),
-//   ),
-// };
-
-// export default ContactList;

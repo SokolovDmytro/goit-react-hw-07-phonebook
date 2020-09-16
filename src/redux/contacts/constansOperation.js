@@ -38,12 +38,4 @@ const onRemoveContacts = id => dispatch => {
     });
 };
 
-// const editContact = ({ name, number, id }) => (dispatch) => {
-//   discontactsActions.editContactRequest());
-//   axios
-//     .patch(`${baseURL}contacts/${id}`, { name, number })
-//     .then(({ data }) => dispatch(contactsActions.editContactSuccess(data)))
-//     .catch((error) => dispatch(contactsActions.editContactError(error)));
-
 export default { onAddContact, fetchContacts, onRemoveContacts };
-// export default { onAddContact, fetchContacts, onRemoveContacts, editContact };

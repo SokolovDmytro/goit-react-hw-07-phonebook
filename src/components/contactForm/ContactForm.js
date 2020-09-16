@@ -17,27 +17,6 @@ class ContactForm extends Component {
     }, 2500);
   };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   if (this.state.name) {
-  //     const isNameExist = this.props.items.some(
-  //       contact => contact.name === this.state.name,
-  //     );
-  //     !isNameExist
-  //       ? this.props.onAddContact({
-  //           name: this.state.name,
-  //           number: this.state.number,
-  //         })
-  //       : this.changeAlertFn();
-
-  //     this.setState({
-  //       name: '',
-  //       number: '',
-  //     });
-  //   }
-  //   return;
-  // };
-
   handleSubmit = e => {
     e.preventDefault();
 
