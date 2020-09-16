@@ -27,6 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "server": "json-server --watch db.json --port 4242 --delay 200",
     "all": "concurrently \"react-scripts start\" \"json-server --watch db.json --port 4242 --delay 200\""
