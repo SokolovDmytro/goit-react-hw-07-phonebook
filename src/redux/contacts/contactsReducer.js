@@ -1,32 +1,35 @@
 import { combineReducers } from 'redux';
 import contactsConstans from './contactsConstans';
 
-const contactsReducer = (state = [], action) => {
-  switch (action.type) {
-    case contactsConstans.ADD_CONTACT:
-      return [...state, action.payload];
+const items = (state = [], { type, payload }) => {
+  switch (type) {
+    case contactsConstans.ADD_CONTACT_SUCCESS:
+      return [...state, payload];
 
-    case contactsConstans.REMOVE_CONTACT:
-      return state.filter(contact => contact.id !== action.payload);
+    case contactsConstans.FETCH_CONTACT_SUCCESS:
+      return payload;
 
-    default:
-      return state;
-  }
-};
-
-const filterReducer = (state = '', action) => {
-  switch (action.type) {
-    case contactsConstans.FILTER_CONTACT:
-      return action.payload;
+    case contactsConstans.DEL_CONTACT_SUCCESS:
+      return state.filter(contacts => contacts.id !== payload);
 
     default:
       return state;
   }
 };
 
-const alertReducer = (state = false, action) => {
-  switch (action.type) {
-    case contactsConstans.EXIST_CONTACT:
+const filter = (state = '', { type, payload }) => {
+  switch (type) {
+    case contactsConstans.FILTER:
+      return payload.filter;
+
+    default:
+      return state;
+  }
+};
+
+const alertSwitch = (state = false, { type }) => {
+  switch (type) {
+    case contactsConstans.DUPLICATE:
       return !state;
 
     default:
@@ -34,8 +37,41 @@ const alertReducer = (state = false, action) => {
   }
 };
 
-export default combineReducers({
-  items: contactsReducer,
-  filter: filterReducer,
-  alert: alertReducer,
-});
+const loading = (state = false, { type, payload }) => {
+  switch (type) {
+    case contactsConstans.ADD_CONTACT_REQUEST:
+    case contactsConstans.FETCH_CONTACT_REQUEST:
+    case contactsConstans.DEL_CONTACT_REQUEST:
+      return true;
+
+    case contactsConstans.ADD_CONTACT_SUCCESS:
+    case contactsConstans.ADD_CONTACT_ERROR:
+    case contactsConstans.FETCH_CONTACT_SUCCESS:
+    case contactsConstans.FETCH_CONTACT_ERROR:
+    case contactsConstans.DEL_CONTACT_SUCCESS:
+    case contactsConstans.DEL_CONTACT_ERROR:
+      return false;
+
+    default:
+      return state;
+  }
+};
+
+const error = (state = null, { type, payload }) => {
+  switch (type) {
+    case contactsConstans.ADD_CONTACT_ERROR:
+    case contactsConstans.FETCH_CONTACT_ERROR:
+    case contactsConstans.DEL_CONTACT_ERROR:
+      return payload;
+
+    case contactsConstans.ADD_CONTACT_REQUEST:
+    case contactsConstans.FETCH_CONTACT_REQUEST:
+    case contactsConstans.DEL_CONTACT_REQUEST:
+      return null;
+
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ items, filter, alertSwitch, loading, error });
